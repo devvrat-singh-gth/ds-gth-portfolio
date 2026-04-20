@@ -1,6 +1,6 @@
 # 🌐 Developer Portfolio
 
-A modern, responsive, and animated developer portfolio built using **Next.js**, showcasing projects, skills, and a fully functional contact system with real-time email delivery.
+A modern, responsive, and visual/animated developer portfolio built using **Next.js**, showcasing projects, skills, and a fully functional contact system with real-time email delivery.
 
 ---
 
