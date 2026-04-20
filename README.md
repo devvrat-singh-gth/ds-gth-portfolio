@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌐 Developer Portfolio
 
 A modern, responsive, and animated developer portfolio built using **Next.js**, showcasing projects, skills, and a fully functional contact system with real-time email delivery.
@@ -137,3 +138,7 @@ Make sure to:
 This project focuses on combining **UI/UX + real backend functionality**, making it more than just a static portfolio.
 
 ---
+=======
+# ds-gth-portfolio
+A modern full-stack portfolio built with Next.js, featuring a responsive UI, animated interactions, and a functional contact system powered by Resend for real-time email delivery.
+>>>>>>> 60ee9ecadfca11004669fdc04f8fb47d33b27411
