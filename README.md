@@ -130,6 +130,8 @@ Make sure to:
 * Portfolio:[ (your link)](https://devvratsingh-portfolio.vercel.app )
 * GitHub: [(your profile)](https://github.com/devvrat-singh-gth)
 
+---
+
 ## ⭐ Notes
 
 This project focuses on combining **UI/UX + real backend functionality**, making it more than just a static portfolio.
