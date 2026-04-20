@@ -127,8 +127,8 @@ Make sure to:
 
 **Devvrat**
 
-* Portfolio:[ (your link)](https://devvratsingh-portfolio.vercel.app )
-* GitHub: [(your profile)](https://github.com/devvrat-singh-gth)
+* Portfolio:[ (deployed link)](https://devvratsingh-portfolio.vercel.app )
+* GitHub: [(My_profile)](https://github.com/devvrat-singh-gth)
 
 ---
 
