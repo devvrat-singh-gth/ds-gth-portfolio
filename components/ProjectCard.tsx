@@ -87,12 +87,15 @@ export default function ProjectCard({ project, onClick, index }: any) {
         `}>
 
           {/* IMAGE */}
-          <div className="md:w-1/2 w-full h-[260px] md:h-full overflow-hidden">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
-            />
+         <img
+  src={project.image}
+  alt={project.title}
+  className={`w-full h-full object-cover transition duration-500 group-hover:scale-110 ${
+    project.image === "/projects/project4.png"
+      ? "object-top"
+      : "object-center"
+  }`}
+/>
           </div>
 
           {/* TEXT */}
