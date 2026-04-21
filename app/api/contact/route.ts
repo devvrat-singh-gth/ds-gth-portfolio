@@ -28,19 +28,30 @@ export async function POST(req: Request) {
       to: ["devvratsinghbanga2005@gmail.com"],
      subject: `New Message from ${fullName}`,
       reply_to: email, // ✅ THIS is key
-      html: `
-        <div style="font-family: Arial; padding: 20px;">
-          <h2>🚀 New Portfolio Message</h2>
+  html: `
+  <div style="font-family: Arial, sans-serif; padding: 24px; background:#f9fafb;">
+    
+    <div style="max-width:600px; margin:auto; background:white; padding:24px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+      
+      <h2 style="margin-bottom:16px;">📩 New Portfolio Message</h2>
 
-          <p><strong>Name:</strong> ${fullName}</p>
-          <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Name:</strong> ${fullName}</p>
+      <p><strong>Email:</strong> ${email}</p>
 
-          <hr style="margin: 16px 0;" />
+      <hr style="margin:20px 0;" />
 
-          <p><strong>Message:</strong></p>
-          <p>${message}</p>
-        </div>
-      `,
+      <p style="margin-bottom:8px;"><strong>Message:</strong></p>
+      <p style="line-height:1.6; color:#444;">${message}</p>
+
+      <hr style="margin:20px 0;" />
+
+      <p style="font-size:12px; color:#888;">
+        Sent from your portfolio contact form
+      </p>
+
+    </div>
+  </div>
+`,
     });
 
     // 📩 2️⃣ AUTO REPLY TO USER
@@ -48,20 +59,35 @@ export async function POST(req: Request) {
       from: "Devvrat <onboarding@resend.dev>",
       to: [email],
       subject: "I received your message 🚀",
-      html: `
-        <div style="font-family: Arial; padding: 20px;">
-          <h2>Hey ${firstName} 👋</h2>
-          <p>Thanks for reaching out! I’ve received your message and will get back to you soon.</p>
+   html: `
+  <div style="font-family: Arial, sans-serif; padding: 24px; background:#f9fafb;">
 
-          <hr style="margin: 16px 0;" />
+    <div style="max-width:600px; margin:auto; background:white; padding:24px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+      
+      <h2 style="margin-bottom:16px;">Hey ${firstName} 👋</h2>
 
-          <p><strong>Your message:</strong></p>
-          <p>${message}</p>
+      <p style="line-height:1.6; color:#444;">
+        Thanks for reaching out! I’ve received your message and will get back to you soon.
+      </p>
 
-          <br/>
-          <p>– Devvrat</p>
-        </div>
-      `,
+      <hr style="margin:20px 0;" />
+
+      <p style="margin-bottom:8px;"><strong>Your message:</strong></p>
+      <p style="line-height:1.6; color:#555;">${message}</p>
+
+      <hr style="margin:20px 0;" />
+
+      <p style="margin-top:16px;">
+        – Devvrat Singh  
+      </p>
+
+      <p style="font-size:12px; color:#888;">
+        Portfolio Contact System
+      </p>
+
+    </div>
+  </div>
+`,
     });
 
     return NextResponse.json({ success: true });

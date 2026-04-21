@@ -111,7 +111,7 @@ mix-blend-overlay" />
                 Contact Me
               </p>
               <p className="text-xl font-medium">
-                devvratsingh@gmail.com
+                devvratsinghbanga2005@gmail.com
               </p>
             </div>
 

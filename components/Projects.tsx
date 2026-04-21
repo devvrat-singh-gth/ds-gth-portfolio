@@ -40,9 +40,9 @@ export default function Projects() {
       title: "Portfolio Website",
       description: "Modern responsive portfolio with animations and interactive UI.",
       tech: ["Next.js", "TypeScript", "Resend API"],
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
-      github: "#",
-      live: "#",
+      image: "/projects/project4.png",
+      github: "https://github.com/devvrat-singh-gth/ds-gth-portfolio",
+      live: "https://devvratsingh-portfolio.vercel.app/",
       gradient: "from-blue-500/20 via-indigo-500/20 to-purple-500/20",
     },
   ];

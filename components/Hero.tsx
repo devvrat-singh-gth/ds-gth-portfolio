@@ -97,7 +97,7 @@ export default function Hero() {
       />
 
       {/* 🔥 CONTENT */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto">
+      <div className="relative z-10 text-center max-w-4xl px-2 sm:px-0 mx-auto">
 
         {/* 🧊 GLASS CONTAINER */}
         <div className="
@@ -112,13 +112,14 @@ export default function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            className="
-              text-4xl sm:text-6xl md:text-7xl 
-             font-orbitron whitespace-nowrap font-bold leading-tight
-              text-white
-            "
+           className="
+  text-3xl sm:text-5xl md:text-6xl 
+  font-orbitron font-bold leading-tight
+  text-white
+  break-words
+"
           >
-            Hi, I&apos;m{" "}
+Hi, I&apos;m <br className="sm:hidden" />
             <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
               Devvrat Singh
             </span>
