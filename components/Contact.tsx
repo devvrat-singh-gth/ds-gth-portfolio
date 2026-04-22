@@ -110,7 +110,7 @@ mix-blend-overlay" />
               <p className="text-sm text-gray-400 uppercase tracking-widest mb-2">
                 Contact Me
               </p>
-              <p className="text-xl font-medium">
+              <p className="text-sm italic font-medium">
                 devvratsinghbanga2005@gmail.com
               </p>
             </div>
@@ -130,11 +130,31 @@ ml-0 lg:ml-6 xl:ml-10 overflow-hidden">
   <div className="absolute inset-0 rounded-2xl 
     bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 
     opacity-60 blur-2xl pointer-events-none" />
+<div className="relative mb-8">
 
-          <h2 className="text-2xl dark:text-white md:text-3xl mb-8 flex items-center gap-2">
-  <span className="animate-bounce">👇</span>
-  Drop your thoughts
-</h2>
+  {/* 🔥 LEFT BOUNCE POINTER */}
+  <span
+    className="
+      absolute left-[-16px] top-1/2 -translate-y-1/2
+      text-lg md:text-xl
+      animate-bounce
+    "
+  >
+    👇
+  </span>
+
+  {/* TEXT */}
+  <h2
+    className="
+      text-2xl md:text-3xl
+      whitespace-nowrap sm:whitespace-normal
+      pl-3
+    "
+  >
+    Drop your thoughts
+  </h2>
+
+</div>
 {/* <h2 className="group text-2xl md:text-3xl mb-8 flex items-center gap-2 cursor-default">
   <span className="inline-block transition-all duration-300 group-hover:rotate-90 group-hover:animate-bounce">
     👉

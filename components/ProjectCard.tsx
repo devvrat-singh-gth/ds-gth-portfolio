@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import MagneticButton from "./MagneticButton";
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
+import { useEffect, useState } from "react";
 
 export default function ProjectCard({ project, onClick, index }: any) {
   const isReverse = index % 2 !== 0;
@@ -21,7 +22,14 @@ export default function ProjectCard({ project, onClick, index }: any) {
       },
     }),
   };
+const [isMobile, setIsMobile] = useState(false);
 
+useEffect(() => {
+  const check = () => setIsMobile(window.innerWidth < 640);
+  check();
+  window.addEventListener("resize", check);
+  return () => window.removeEventListener("resize", check);
+}, []);
   return (
     <motion.div
       custom={index} // ✅ PASS INDEX HERE
@@ -29,10 +37,16 @@ export default function ProjectCard({ project, onClick, index }: any) {
       initial={index % 2 === 0 ? "hiddenLeft" : "hiddenRight"}
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
-      whileHover={{ y: -10, scale: 1.02 }}
-      onClick={() => onClick(project)}
-      className="group relative w-full h-[520px] md:h-[600px] rounded-3xl cursor-pointer"
-    >
+      whileTap={{ scale: 0.98 }}
+whileHover={!isMobile ? { y: -10, scale: 1.02 } : {}}
+onClick={() => {
+  if (isMobile) {
+    onClick(project); // open modal
+  } else {
+    window.open(project.live || project.github, "_blank");
+  }
+}}
+className="group relative w-full h-[420px] sm:h-[520px] md:h-[600px] rounded-3xl cursor-pointer active:scale-[0.98]"    >
 
       {/* 🔥 NEON BORDER */}
       <div className="absolute inset-0 rounded-3xl p-[5px] z-0 overflow-hidden">
@@ -87,24 +101,21 @@ export default function ProjectCard({ project, onClick, index }: any) {
         `}>
 
           {/* IMAGE */}
-          <div className="md:w-1/2 w-full h-[260px] md:h-full overflow-hidden">
-            <img
+<div className="md:w-1/2 w-full h-[200px] sm:h-[240px] md:h-full overflow-hidden">            <img
               src={project.image}
               alt={project.title}
 className="w-full h-full object-cover object-top transition duration-500 group-hover:scale-110"            />
           </div>
 
           {/* TEXT */}
-          <div className="md:w-1/2 w-full flex-1 p-6 md:p-10 flex flex-col justify-center gap-2 text-gray-900 dark:text-white">
-
+<div className="md:w-1/2 w-full flex-1 p-4 sm:p-6 md:p-10 flex flex-col justify-center gap-2">
             <h3 className="text-2xl md:text-3xl font-semibold mb-3">
               {project.title}
             </h3>
 
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
-              {project.description}
-            </p>
-
+      <p className="hidden sm:block text-gray-600 dark:text-gray-400 mb-6">
+  {project.description}
+</p>
             {/* TECH */}
             <div className="flex flex-wrap gap-2 mt-4">
               {project.tech?.map((t: string, i: number) => (
@@ -123,15 +134,17 @@ className="w-full h-full object-cover object-top transition duration-500 group-h
             </div>
 
             {/* BUTTONS */}
-            <div className="flex gap-4 pt-2">
-              <MagneticButton href={project.github || "#"}>
-                <FaGithub size={22} />
-              </MagneticButton>
+           {!isMobile && (
+  <div className="flex gap-4 pt-2">
+    <MagneticButton href={project.github || "#"}>
+      <FaGithub size={22} />
+    </MagneticButton>
 
-              <MagneticButton href={project.live || "#"}>
-                <FiExternalLink size={22} />
-              </MagneticButton>
-            </div>
+    <MagneticButton href={project.live || "#"}>
+      <FiExternalLink size={22} />
+    </MagneticButton>
+  </div>
+)}
 
           </div>
         </div>

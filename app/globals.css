@@ -90,3 +90,26 @@ html {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+/* 🔥 horizontal scroll snap smooth */
+.snap-x {
+  scroll-snap-type: x mandatory;
+}
+
+.snap-center {
+  scroll-snap-align: center;
+}
+/* 🔥 smooth touch scroll */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}
+@keyframes slideLeft {
+  0% { transform: translateX(0); opacity: 0.4; }
+  50% { transform: translateX(-6px); opacity: 1; }
+  100% { transform: translateX(0); opacity: 0.4; }
+}
+
+@keyframes slideRight {
+  0% { transform: translateX(0); opacity: 0.4; }
+  50% { transform: translateX(6px); opacity: 1; }
+  100% { transform: translateX(0); opacity: 0.4; }
+}

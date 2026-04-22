@@ -150,8 +150,8 @@ const lineHeight = useTransform(
       </div>
 
 {/* 🌳 TIMELINE STORY */}
-<div ref={ref} className="relative max-w-5xl mx-auto mt-20">
-
+{/* 🌳 MOBILE = STACKED CARDS / DESKTOP = TIMELINE */}
+<div ref={ref} className="relative max-w-5xl mx-auto mt-16 sm:mt-20">
   {/* 🌳 BACK LINE */}
   <div className="absolute left-[50.5%] top-0 w-[3px] sm:w-[5px]
 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500
@@ -265,11 +265,12 @@ const cardShadow = useTransform(
 />
         {/* 🌿 CARD */}
         <motion.div
-      style={{
-  boxShadow: cardShadow
+     style={{
+  boxShadow: isMobile
+    ? "0 0 20px rgba(99,102,241,0.25)"
+    : cardShadow
 }}
-          initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-          whileInView={{ scale: isMobile ? 1.03 : 1, opacity: 1, x: 0 }}
+initial={{ opacity: 0, y: isMobile ? 30 : 0, x: isMobile ? 0 : (i % 2 === 0 ? -50 : 50) }}          whileInView={{ scale: isMobile ? 1.03 : 1, opacity: 1, x: 0 }}
           viewport={{ once: false }}
 transition={{
   duration: 0.4,

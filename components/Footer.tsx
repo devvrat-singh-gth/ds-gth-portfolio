@@ -41,7 +41,7 @@ border-t border-gray-200/50 dark:border-gray-800/50
         </div>
 
         {/* MIDDLE: NAVIGATION */}
-        <div className="flex flex-row md:flex-col flex-wrap justify-center md:justify-start gap-4 md:gap-2">
+        <div className="flex flex-row font-orbitron md:flex-col flex-wrap justify-center md:justify-start gap-4 md:gap-2">
           <a href="#hero" className={linkClass("hero")}>Home</a>
           <a href="#about" className={linkClass("about")}>About</a>
           <a href="#projects" className={linkClass("projects")}>Projects</a>
@@ -54,7 +54,7 @@ border-t border-gray-200/50 dark:border-gray-800/50
           {/* SOCIAL LINKS */}
           <div className="flex flex-wrap justify-center md:justify-end gap-4 text-xs text-gray-500 dark:text-gray-400">
             <a
-              href="https://github.com"
+              href="https://github.com/devvrat-singh-gth"
               target="_blank"
               className="hover:text-black dark:hover:text-white transition-colors"
             >
@@ -70,10 +70,10 @@ border-t border-gray-200/50 dark:border-gray-800/50
             </a>
 
             <a
-              href="mailto:example@email.com"
+              href="mailto:devvratsinghbanga2005@gmail.com"
               className="hover:text-black dark:hover:text-white transition-colors"
             >
-              Email
+              Gmail
             </a>
           </div>
 
@@ -93,12 +93,12 @@ border-t border-gray-200/50 dark:border-gray-800/50
       <div className="border-t border-gray-200 dark:border-gray-800 pt-4 flex flex-col md:flex-row justify-between items-center gap-2 text-xs">
 
         {/* COPYRIGHT */}
-        <p className="text-gray-500 dark:text-gray-400 text-center md:text-left">
+        <p className="font-mono text-gray-500 dark:text-gray-400 text-center md:text-left">
           © {new Date().getFullYear()} Devvrat Singh. All rights reserved.
         </p>
 
         {/* TECH STACK */}
-        <p className="text-gray-400 dark:text-gray-500 text-center md:text-right">
+        <p className="font-orbitron text-gray-400 dark:text-gray-500 text-center md:text-right">
           Built with Next.js
         </p>
 
