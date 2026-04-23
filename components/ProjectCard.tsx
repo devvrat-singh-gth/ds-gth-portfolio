@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import MagneticButton from "./MagneticButton";
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function ProjectCard({ project, onClick, index, isActive }: any) {
   const isReverse = index % 2 !== 0;
@@ -22,18 +22,33 @@ export default function ProjectCard({ project, onClick, index, isActive }: any) 
       },
     }),
   };
-
+const [inView, setInView] = useState(false);
+const cardRef = useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+useEffect(() => {
+  if (isMobile) return; // 🚫 desktop only
 
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      setInView(entry.isIntersecting);
+    },
+    { threshold: 0.6 }
+  );
+
+  if (cardRef.current) observer.observe(cardRef.current);
+
+  return () => observer.disconnect();
+}, [isMobile]);
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 640);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
-
+const isVisibleActive = isActive || (!isMobile && inView);
   return (
     <motion.div
+    ref={cardRef}
       custom={index}
       variants={variants}
       initial={index % 2 === 0 ? "hiddenLeft" : "hiddenRight"}
@@ -42,38 +57,25 @@ export default function ProjectCard({ project, onClick, index, isActive }: any) 
       whileTap={{ scale: 0.98 }}
       whileHover={!isMobile ? { y: -10, scale: 1.02 } : {}}
       onClick={() => onClick(project)}
-      className={`group relative w-full h-[420px] sm:h-[520px] md:h-[600px] rounded-3xl cursor-pointer active:scale-[0.98]
-        ${isActive ? "scale-[1.02] -translate-y-2" : ""}`}
-    >
+     className={`group relative w-full h-[420px] sm:h-[520px] md:h-[600px] rounded-3xl cursor-pointer active:scale-[0.98]
+  ${isActive ? "scale-[1.02] -translate-y-2" : ""}
 
-      {/* 🔥 NEON BORDER */}
-      <div className="absolute inset-0 rounded-3xl p-[5px] z-0 overflow-hidden">
+  transition-all duration-500
 
-        <div className={`
-          absolute inset-0 rounded-3xl 
-          bg-gradient-to-r from-cyan-400 via-indigo-500 via-purple-500 to-pink-500
-          transition duration-500
-          ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
-        `} />
+  ${
+    isVisibleActive
+      ? "shadow-[0_0_30px_rgba(59,130,246,0.7),0_0_60px_rgba(168,85,247,0.6)]"
+      : "shadow-[0_8px_30px_rgba(0,0,0,0.25)] group-hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+  }
+`}   >
 
-        <div className={`
-          absolute top-0 left-[-50%] h-full w-[50%]
-          bg-gradient-to-r from-transparent via-white/40 to-transparent
-          blur-md transition duration-500
-          ${isActive 
-            ? "opacity-100 animate-[glowTrail_2.5s_linear_infinite]" 
-            : "opacity-0 group-hover:opacity-100 group-hover:animate-[glowTrail_2.5s_linear_infinite]"
-          }
-        `} />
-      </div>
-
+    
       {/* 🧊 GLASS CARD */}
       <div className={`
         relative z-10 h-full m-[2px] rounded-3xl overflow-hidden
         bg-black/20 dark:bg-black/40 backdrop-blur-xl
         border border-gray-200/40 dark:border-white/10
-        shadow-[0_8px_30px_rgba(0,0,0,0.25)]
-        dark:shadow-[0_8px_40px_rgba(0,0,0,0.6)]
+       shadow-none
         transition-all duration-500 ease-out
         ${isActive 
           ? "shadow-[0_25px_70px_rgba(0,0,0,0.6)]" 
@@ -90,16 +92,23 @@ export default function ProjectCard({ project, onClick, index, isActive }: any) 
 
         {/* 🔥 TITLE OVERLAY */}
         <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none px-4 hidden md:flex">
-          <h3 className={`
-            text-5xl md:text-6xl xl:text-7xl
-            font-mono font-light tracking-[0.25em] md:tracking-[0.3em]
-            uppercase text-center text-transparent bg-clip-text
-            bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-400
-            transition duration-500
-            ${isActive ? "opacity-0" : "group-hover:opacity-0"}
-          `}>
-            {project.title}
-          </h3>
+         <h3
+  className={`
+    text-4xl md:text-6xl xl:text-7xl
+    font-mono font-light
+    tracking-[0.15em] md:tracking-[0.2em]
+    uppercase text-center
+    text-transparent bg-clip-text
+    bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-400
+    transition duration-500
+
+    break-words whitespace-normal leading-tight max-w-[90%]
+
+    ${isActive ? "opacity-0" : "group-hover:opacity-0"}
+  `}
+>
+  {project.title}
+</h3>
         </div>
 
         {/* 📦 CONTENT */}
