@@ -104,12 +104,13 @@ space-y-4 sm:space-y-5 md:space-y-8
               </div>
 
               {/* ✅ TRUE BOTTOM FOOTER */}
-              <div className="
-                p-5 md:p-6
-                border-t border-gray-200 dark:border-gray-800
-                bg-white/80 dark:bg-[#0a0f14]/80 backdrop-blur-xl
-              ">
-<div className="flex flex-row gap-3">
+           {/* FOOTER */}
+<div className="
+  p-4 sm:p-5 md:p-6
+  border-t border-gray-200 dark:border-gray-800
+  bg-white/80 dark:bg-[#0a0f14]/80 backdrop-blur-xl
+">
+  <div className="flex flex-row gap-2 sm:gap-3">
 
   <a
     href={project.github}
