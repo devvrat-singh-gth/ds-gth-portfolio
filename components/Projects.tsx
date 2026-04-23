@@ -76,7 +76,7 @@ useEffect(() => {
   return () => clearInterval(interval);
 }, [isUserInteracting]);
   return (
-   <section className="relative w-full px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-32 py-16 md:py-24 overflow-hidden isolate">
+   <section className="relative w-full px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-32 py-16 md:py-24">
 <div className="absolute top-0 left-0 w-full h-60
   bg-gradient-to-b from-black/70 to-transparent
   dark:from-black"
@@ -127,10 +127,11 @@ useEffect(() => {
 className="snap-center shrink-0 w-[82%] min-w-[280px] transition-transform duration-300"      
 >
         <ProjectCard
-          project={p}
-          onClick={setSelected}
-          index={i}
-        />
+  project={p}
+  onClick={setSelected}
+  index={i}
+  isActive={selected?.title === p.title} // ✅ NEW
+/>
       </div>
     ))}
   </div>
