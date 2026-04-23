@@ -8,7 +8,11 @@ import MagneticButton from "./MagneticButton";
 
 export default function Projects() {
   const [selected, setSelected] = useState(null);
-
+const interactionTimeout = useRef<NodeJS.Timeout | null>(null);
+const isMobile = useRef(false);
+useEffect(() => {
+  isMobile.current = window.innerWidth < 640;
+}, []);
   const projects = [
     {
       title: "AI Assistant [Groq-API]",
@@ -114,6 +118,26 @@ useEffect(() => {
 <div className="sm:hidden relative mt-10">
 <div
   ref={scrollRef}
+  onTouchStart={() => {
+    if (!isMobile.current) return;
+
+    setIsUserInteracting(true);
+
+    if (interactionTimeout.current) {
+      clearTimeout(interactionTimeout.current);
+    }
+  }}
+  onTouchEnd={() => {
+    if (!isMobile.current) return;
+
+    if (interactionTimeout.current) {
+      clearTimeout(interactionTimeout.current);
+    }
+
+    interactionTimeout.current = setTimeout(() => {
+      setIsUserInteracting(false); // ✅ resume after 4 sec
+    }, 4000);
+  }}
   className="
     flex gap-5 overflow-x-auto scrollbar-hide 
     snap-x snap-mandatory px-4
