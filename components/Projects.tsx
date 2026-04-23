@@ -48,6 +48,8 @@ export default function Projects() {
     },
   ];
 const scrollRef = useRef<HTMLDivElement | null>(null);
+const [isUserInteracting, setIsUserInteracting] = useState(false);
+
 useEffect(() => {
   const el = scrollRef.current;
   if (!el) return;
@@ -55,7 +57,9 @@ useEffect(() => {
   let index = 0;
 
   const interval = setInterval(() => {
-    const cardWidth = el.children[0]?.clientWidth + 20; // gap included
+    if (isUserInteracting) return;
+
+    const cardWidth = el.children[0]?.clientWidth + 20;
     index++;
 
     if (index >= projects.length) {
@@ -67,10 +71,10 @@ useEffect(() => {
         behavior: "smooth",
       });
     }
-  }, 3000); // 🔥 speed (3s)
+  }, 3500);
 
   return () => clearInterval(interval);
-}, []);
+}, [isUserInteracting]);
   return (
    <section className="relative w-full px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-32 py-16 md:py-24 overflow-hidden isolate">
 <div className="absolute top-0 left-0 w-full h-60
@@ -108,40 +112,35 @@ useEffect(() => {
 <div className="sm:hidden absolute right-0 top-0 h-full w-10 z-10 bg-gradient-to-l from-white dark:from-[#0a0f14] to-transparent pointer-events-none" />
        {/* 🔥 MOBILE CAROUSEL */}
 <div className="sm:hidden relative mt-10">
-<div
-  ref={scrollRef}
-  className="
-    flex gap-5 overflow-x-auto scrollbar-hide 
-    snap-x snap-mandatory px-4
-    scroll-smooth
-  "
-    style={{ scrollPaddingLeft: "16px" }}
+  <div
+    ref={scrollRef}
+    onTouchStart={() => setIsUserInteracting(true)}
+    onTouchEnd={() => setIsUserInteracting(false)}
+    className="
+      flex gap-5 overflow-x-auto scrollbar-hide 
+      snap-x snap-mandatory px-4
+    "
   >
     {projects.map((p, i) => (
       <div
         key={i}
-className="snap-center shrink-0 w-[82%] min-w-[280px] transition-transform duration-300"      
->
-        <ProjectCard
-          project={p}
-          onClick={setSelected}
-          index={i}
-        />
+        className="
+          snap-center shrink-0 w-[82%] min-w-[280px]
+          transition-all duration-300
+          hover:scale-[1.03]
+          active:scale-[0.97]
+        "
+      >
+        <div className="bg-white/40 dark:bg-white/5 backdrop-blur-xl rounded-2xl">
+          <ProjectCard
+            project={p}
+            onClick={setSelected}
+            index={i}
+          />
+        </div>
       </div>
     ))}
   </div>
-</div>
-
-{/* 🖥️ DESKTOP GRID */}
-<div className="hidden sm:grid grid-cols-1 gap-16">
-  {projects.map((p, i) => (
-    <ProjectCard
-      key={i}
-      project={p}
-      onClick={setSelected}
-      index={i}
-    />
-  ))}
 </div>
 {/* 🚀 CTA USING SECTION TITLE */}
 {/* 🚀 CTA (MOBILE OPTIMIZED) */}
