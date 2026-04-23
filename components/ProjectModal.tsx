@@ -17,13 +17,16 @@ export default function ProjectModal({ project, onClose }: any) {
     };
 
     window.addEventListener("keydown", handleKey);
-    document.body.style.overflow = "hidden";
+if (window.innerWidth >= 1024) {
+  document.body.style.overflow = "hidden"; // desktop only
+}
+   return () => {
+  window.removeEventListener("keydown", handleKey);
 
-    return () => {
-      window.removeEventListener("keydown", handleKey);
-      document.body.style.overflow = "auto";
-    };
-  }, []);
+  if (window.innerWidth >= 1024) {
+    document.body.style.overflow = "auto";
+  }
+}}, []);
 
   if (!mounted) return null;
 
@@ -31,7 +34,11 @@ export default function ProjectModal({ project, onClose }: any) {
     <AnimatePresence>
       {project && (
         <motion.div
-          className="fixed inset-0 z-[9999] flex items-center justify-center"
+      className="
+  fixed inset-0 z-[9999]
+  flex items-start justify-center
+  overflow-y-auto
+"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
