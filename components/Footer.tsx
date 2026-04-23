@@ -80,7 +80,7 @@ border-t border-gray-200/50 dark:border-gray-800/50
           {/* CTA */}
           <a
             href="#contact"
-            className="mt-2 text-xs px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-full
+            className="mt-2 font-orbitron text-xs px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-full
             hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black
             transition-all duration-200"
           >
@@ -98,7 +98,7 @@ border-t border-gray-200/50 dark:border-gray-800/50
         </p>
 
         {/* TECH STACK */}
-        <p className="font-orbitron text-gray-400 dark:text-gray-500 text-center md:text-right">
+        <p className="font-mono text-gray-400 dark:text-gray-500 text-center md:text-right">
           Built with Next.js
         </p>
 

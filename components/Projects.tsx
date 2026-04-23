@@ -144,11 +144,54 @@ className="snap-center shrink-0 w-[82%] min-w-[280px] transition-transform durat
   ))}
 </div>
 {/* 🚀 CTA USING SECTION TITLE */}
-<div className="mt-24">
-  <SectionTitle
-    title="SEE OTHER PROJECTS →"
-    href="https://github.com/devvrat-singh-gth"
-  />
+{/* 🚀 CTA (MOBILE OPTIMIZED) */}
+<div className="mt-20 flex justify-center px-4">
+
+  {/* 🔥 MOBILE VERSION */}
+  <div className="w-full sm:hidden">
+    <a
+      href="https://github.com/devvrat-singh-gth"
+      target="_blank"
+      className="
+        relative block w-full text-center
+        py-4 rounded-2xl
+        bg-white/80 dark:bg-white/10
+        backdrop-blur-xl
+        border border-gray-200 dark:border-gray-700
+        text-black dark:text-white
+        text-sm tracking-wide
+        active:scale-[0.97]
+        transition-all duration-300
+        overflow-hidden
+      "
+    >
+
+      {/* 🔥 HOVER / TAP GLOW */}
+      <span
+        className="
+          absolute inset-0 opacity-0 active:opacity-100
+          bg-gradient-to-r
+          from-blue-500/20 via-purple-500/20 to-pink-500/20
+          transition-opacity duration-300
+        "
+      />
+
+      {/* TEXT */}
+      <span className="relative z-10">
+        See Other Projects →
+      </span>
+
+    </a>
+  </div>
+
+  {/* 🖥️ DESKTOP VERSION (UNCHANGED) */}
+  <div className="hidden sm:block w-full">
+    <SectionTitle
+      title="SEE OTHER PROJECTS →"
+      href="https://github.com/devvrat-singh-gth"
+    />
+  </div>
+
 </div>
         <ProjectModal project={selected} onClose={() => setSelected(null)} />
 <div className="absolute bottom-0 left-0 w-full h-20

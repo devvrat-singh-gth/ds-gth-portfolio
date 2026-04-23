@@ -71,7 +71,7 @@ export default function Header() {
             className="absolute top-[64px] left-0 w-full 
             bg-white/90 dark:bg-black/90 
             backdrop-blur-xl 
-            border-b border-gray-200 dark:border-gray-800 
+            border-b font-mono border-gray-200 dark:border-gray-800 
             flex flex-col items-center gap-6 py-6 md:hidden"
           >
             {navLinks.map((link) => (
