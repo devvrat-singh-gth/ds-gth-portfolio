@@ -112,35 +112,40 @@ useEffect(() => {
 <div className="sm:hidden absolute right-0 top-0 h-full w-10 z-10 bg-gradient-to-l from-white dark:from-[#0a0f14] to-transparent pointer-events-none" />
        {/* 🔥 MOBILE CAROUSEL */}
 <div className="sm:hidden relative mt-10">
-  <div
-    ref={scrollRef}
-    onTouchStart={() => setIsUserInteracting(true)}
-    onTouchEnd={() => setIsUserInteracting(false)}
-    className="
-      flex gap-5 overflow-x-auto scrollbar-hide 
-      snap-x snap-mandatory px-4
-    "
+<div
+  ref={scrollRef}
+  className="
+    flex gap-5 overflow-x-auto scrollbar-hide 
+    snap-x snap-mandatory px-4
+    scroll-smooth
+  "
+    style={{ scrollPaddingLeft: "16px" }}
   >
     {projects.map((p, i) => (
       <div
         key={i}
-        className="
-          snap-center shrink-0 w-[82%] min-w-[280px]
-          transition-all duration-300
-          hover:scale-[1.03]
-          active:scale-[0.97]
-        "
-      >
-        <div className="bg-white/40 dark:bg-white/5 backdrop-blur-xl rounded-2xl">
-          <ProjectCard
-            project={p}
-            onClick={setSelected}
-            index={i}
-          />
-        </div>
+className="snap-center shrink-0 w-[82%] min-w-[280px] transition-transform duration-300"      
+>
+        <ProjectCard
+          project={p}
+          onClick={setSelected}
+          index={i}
+        />
       </div>
     ))}
   </div>
+</div>
+
+{/* 🖥️ DESKTOP GRID */}
+<div className="hidden sm:grid grid-cols-1 gap-16">
+  {projects.map((p, i) => (
+    <ProjectCard
+      key={i}
+      project={p}
+      onClick={setSelected}
+      index={i}
+    />
+  ))}
 </div>
 {/* 🚀 CTA USING SECTION TITLE */}
 {/* 🚀 CTA (MOBILE OPTIMIZED) */}
