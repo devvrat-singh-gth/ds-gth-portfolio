@@ -29,21 +29,21 @@ export default function Home() {
 
         {/* ABOUT */}
         <section id="about">
-          <Reveal>
+          <Reveal once>
             <About />
           </Reveal>
         </section>
 
         {/* PROJECTS */}
         <section id="projects">
-          <Reveal>
+          <Reveal once>
             <Projects />
           </Reveal>
         </section>
 
         {/* CONTACT */}
         <section id="contact">
-          <Reveal>
+          <Reveal once>
             <Contact />
           </Reveal>
         </section>
