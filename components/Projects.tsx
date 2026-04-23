@@ -147,23 +147,24 @@ useEffect(() => {
 <div className="mt-20 flex justify-center px-4">
 
   {/* 🔥 MOBILE VERSION */}
-  <div className="w-full sm:hidden">
-    <a
-      href="https://github.com/devvrat-singh-gth"
-      target="_blank"
-      className="
-        relative block w-full text-center
-        py-4 rounded-2xl
-        bg-white/80 dark:bg-white/10
-        backdrop-blur-xl
-        border border-gray-200 dark:border-gray-700
-        text-black dark:text-white
-        text-sm tracking-wide
-        active:scale-[0.97]
-        transition-all duration-300
-        overflow-hidden
-      "
-    >
+ {/* 🔥 MOBILE VERSION (CLEAN - NO WIPE) */}
+<div className="w-full sm:hidden">
+  <a
+    href="https://github.com/devvrat-singh-gth"
+    target="_blank"
+    className="
+      block w-full text-center
+      py-4 rounded-2xl
+      bg-white/70 dark:bg-white/10
+      backdrop-blur-xl
+      border border-gray-200 dark:border-gray-700
+      text-black dark:text-white
+      text-sm tracking-wide
+      active:scale-[0.97]
+      active:bg-white/50 dark:active:bg-white/5
+      transition-all duration-200
+    "
+  >
 
       {/* 🔥 HOVER / TAP GLOW */}
       <span
