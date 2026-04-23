@@ -36,8 +36,9 @@ if (window.innerWidth >= 1024) {
         <motion.div
       className="
   fixed inset-0 z-[9999]
-  flex items-start justify-center
+  flex items-center justify-center
   overflow-y-auto
+  px-3 py-6
 "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
