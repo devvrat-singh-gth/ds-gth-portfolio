@@ -55,7 +55,7 @@ export default function Hero() {
     <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden px-4">
 
       {/* 🎥 VIDEO BACKGROUND */}
-   <video
+<video
   autoPlay
   loop
   muted
@@ -66,6 +66,7 @@ export default function Hero() {
   className="absolute inset-0 w-full h-full object-cover -z-30"
 >
   <source src="/videos/hero-bg.webm" type="video/webm" />
+  <source src="/videos/hero-bg-mobile.webm" type="video/webm" media="(max-width: 768px)" />
 </video>
 
       {/* 🌑 DARK OVERLAY (IMPORTANT FOR TEXT VISIBILITY) */}
