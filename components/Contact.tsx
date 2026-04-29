@@ -3,7 +3,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
+import emailjs from "@emailjs/browser";
 import SectionTitle from "./SectionTitle";
+
+const USE_EMAILJS = true; // 🔥 true = EmailJS, false = Resend API
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -29,24 +32,44 @@ const submit = async (e: any) => {
 
   try {
     setStatus("loading");
-
     toast.loading("Sending message...");
 
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 8000);
+    // =========================
+    // 🔥 OPTION 1: EMAILJS
+    // =========================
+    if (USE_EMAILJS) {
+      await emailjs.send(
+        "service_l9iq879",
+        "template_zrcfjyh",
+      {
+  name: `${form.firstName} ${form.lastName}`, // 🔥 important
+  email: form.email,
+  message: form.message,
+},
+        "twycHeSs83qBDYqdE"
+      );
+    }
 
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-      signal: controller.signal,
-    });
+    // =========================
+    // 🔥 OPTION 2: RESEND API
+    // =========================
+    else {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 8000);
 
-    clearTimeout(timeout);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+        signal: controller.signal,
+      });
 
-    if (!res.ok) throw new Error();
+      clearTimeout(timeout);
+
+      if (!res.ok) throw new Error();
+    }
 
     // ✅ SUCCESS FLOW
     toast.dismiss();
@@ -61,8 +84,9 @@ const submit = async (e: any) => {
       message: "",
     });
 
-  } catch {
-    // ❌ ERROR FLOW
+  } catch (err) {
+    console.error(err);
+
     toast.dismiss();
     toast.error("Something went wrong ❌");
 
