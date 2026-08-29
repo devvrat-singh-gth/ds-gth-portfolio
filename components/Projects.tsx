@@ -18,7 +18,7 @@ useEffect(() => {
       title: "RecallNova",
       description: "AI-powered Learning platform with RAG capabilities to enhance learning more.",
       tech: ["Next.js", "GROQ-API","Python-FastAPI", "Redis"],
-      image: "/projects/project5.png",
+      image: "/projects/projectre.png",
       github: "https://github.com/devvrat-singh-gth/RecallNOVA_frontend",
       live: "https://recall-nova-ai.vercel.app/",
       gradient: "from-green-500/20 via-blue-500/20 to-yellow-500/20",
