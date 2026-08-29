@@ -15,13 +15,13 @@ useEffect(() => {
 }, []);
   const projects = [
     {
-      title: "AI Assistant [Groq-API]",
-      description: "AI-powered assistant with voice, chat, and automation features.",
-      tech: ["Next.js", "API-LLM", "TTS", "Python-FastAPI"],
-      image: "/projects/project1.png",
-      github: "https://github.com/devvrat-singh-gth/Chatbot_CstmPrmpt",
+      title: "RecallNova",
+      description: "AI-powered Learning platform with RAG capabilities to enhance learning more.",
+      tech: ["Next.js", "GROQ-API","Python-FastAPI", "Redis"],
+      image: "/projects/project5.png",
+      github: "https://github.com/devvrat-singh-gth/RecallNOVA_frontend",
       live: "#",
-      gradient: "from-purple-500/20 via-blue-500/20 to-pink-500/20",
+      gradient: "from-green-500/20 via-blue-500/20 to-yellow-500/20",
     },
     {
       title: "VeNexus Extension",
