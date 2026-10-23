@@ -22,33 +22,37 @@ export default function ProjectCard({ project, onClick, index, isActive }: any) 
       },
     }),
   };
-const [inView, setInView] = useState(false);
-const cardRef = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(false);
+  const cardRef = useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
-useEffect(() => {
-  if (isMobile) return; // 🚫 desktop only
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      setInView(entry.isIntersecting);
-    },
-    { threshold: 0.6 }
-  );
+  useEffect(() => {
+    if (isMobile) return;
 
-  if (cardRef.current) observer.observe(cardRef.current);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      { threshold: 0.6 }
+    );
 
-  return () => observer.disconnect();
-}, [isMobile]);
+    if (cardRef.current) observer.observe(cardRef.current);
+
+    return () => observer.disconnect();
+  }, [isMobile]);
+
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 640);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
-const isVisibleActive = isActive || (!isMobile && inView);
+
+  const isVisibleActive = isActive || (!isMobile && inView);
+
   return (
     <motion.div
-    ref={cardRef}
+      ref={cardRef}
       custom={index}
       variants={variants}
       initial={index % 2 === 0 ? "hiddenLeft" : "hiddenRight"}
@@ -57,29 +61,26 @@ const isVisibleActive = isActive || (!isMobile && inView);
       whileTap={{ scale: 0.98 }}
       whileHover={!isMobile ? { y: -10, scale: 1.02 } : {}}
       onClick={() => onClick(project)}
-     className={`group relative w-full h-[420px] sm:h-[520px] md:h-[600px] rounded-3xl cursor-pointer active:scale-[0.98]
-  ${isActive ? "scale-[1.02] -translate-y-2" : ""}
-
-  transition-all duration-500
-
-  ${
-    isVisibleActive
-      ? "shadow-[0_0_30px_rgba(59,130,246,0.7),0_0_60px_rgba(168,85,247,0.6)]"
-      : "shadow-[0_8px_30px_rgba(0,0,0,0.25)] group-hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
-  }
-`}   >
-
-    
+      className={`group relative w-full h-[420px] sm:h-[520px] md:h-[600px] rounded-3xl cursor-pointer active:scale-[0.98]
+        ${isActive ? "scale-[1.02] -translate-y-2" : ""}
+        transition-all duration-500
+        ${
+          isVisibleActive
+            ? "shadow-[0_0_30px_rgba(59,130,246,0.7),0_0_60px_rgba(168,85,247,0.6)]"
+            : "shadow-[0_8px_30px_rgba(0,0,0,0.25)] group-hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+        }
+      `}
+    >
       {/* 🧊 GLASS CARD */}
       <div className={`
         relative z-10 h-full m-[2px] rounded-3xl overflow-hidden
         bg-black/20 dark:bg-black/40 backdrop-blur-xl
         border border-gray-200/40 dark:border-white/10
-       shadow-none
+        shadow-none
         transition-all duration-500 ease-out
         ${isActive 
           ? "shadow-[0_25px_70px_rgba(0,0,0,0.6)]" 
-          : "group-hover:shadow-[0_25px_70px_rgba(0,0,0,0.6]"
+          : "group-hover:shadow-[0_25px_70px_rgba(0,0,0,0.6)]"
         }
       `}>
 
@@ -92,23 +93,21 @@ const isVisibleActive = isActive || (!isMobile && inView);
 
         {/* 🔥 TITLE OVERLAY */}
         <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none px-4 hidden md:flex">
-         <h3
-  className={`
-    text-4xl md:text-6xl xl:text-7xl
-    font-mono font-light
-    tracking-[0.15em] md:tracking-[0.2em]
-    uppercase text-center
-    text-transparent bg-clip-text
-    bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-400
-    transition duration-500
-
-    break-words whitespace-normal leading-tight max-w-[90%]
-
-    ${isActive ? "opacity-0" : "group-hover:opacity-0"}
-  `}
->
-  {project.title}
-</h3>
+          <h3
+            className={`
+              text-4xl md:text-6xl xl:text-7xl
+              font-mono font-light
+              tracking-[0.15em] md:tracking-[0.2em]
+              uppercase text-center
+              text-transparent bg-clip-text
+              bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-400
+              transition duration-500
+              break-words whitespace-normal leading-tight max-w-[90%]
+              ${isActive ? "opacity-0" : "group-hover:opacity-0"}
+            `}
+          >
+            {project.title}
+          </h3>
         </div>
 
         {/* 📦 CONTENT */}
@@ -123,17 +122,17 @@ const isVisibleActive = isActive || (!isMobile && inView);
         `}>
 
           {/* IMAGE */}
-          <div className="md:w-1/2 w-full h-[200px] sm:h-[240px] md:h-full overflow-hidden">
+          <div className="md:w-1/2 w-full h-[200px] sm:h-[240px] md:h-full md:shrink-0 overflow-hidden">
             <img
               src={project.image}
               alt={project.title}
               className={`
-                w-full h-full object-cover object-top transition duration-500
+                w-full h-full object-cover transition duration-500 object-[20%_0%] 
                 ${isActive ? "scale-110" : "group-hover:scale-110"}
               `}
             />
           </div>
-
+          
           {/* TEXT */}
           <div className="md:w-1/2 w-full flex-1 p-4 sm:p-6 md:p-10 flex flex-col justify-center gap-2">
             <h3 className="text-2xl md:text-3xl font-semibold mb-3">
