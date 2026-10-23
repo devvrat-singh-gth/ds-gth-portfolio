@@ -127,12 +127,12 @@ export default function ProjectCard({ project, onClick, index, isActive }: any) 
               src={project.image}
               alt={project.title}
               className={`
-                w-full h-full object-cover transition duration-500 object-[20%_0%] 
+                w-full h-full object-cover transition duration-500 object-[10%_0%] 
                 ${isActive ? "scale-110" : "group-hover:scale-110"}
               `}
             />
           </div>
-          
+
           {/* TEXT */}
           <div className="md:w-1/2 w-full flex-1 p-4 sm:p-6 md:p-10 flex flex-col justify-center gap-2">
             <h3 className="text-2xl md:text-3xl font-semibold mb-3">
