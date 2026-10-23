@@ -173,7 +173,7 @@ className="snap-center shrink-0 w-[82%] min-w-[280px] transition-transform durat
   project={p}
   onClick={setSelected}
   index={i}
-  isActive={selected?.title === p.title} // ✅ NEW
+  isActive={selected?.title === p.title} // ✅ NEW 
 />
       </div>
     ))}
