@@ -8,7 +8,6 @@ A modern, responsive, and visual/animated developer portfolio built using **Next
 
 * ⚡ Built with Next.js (App Router)
 * 🎨 Clean, modern UI with smooth animations (Framer Motion)
-* 🌙 Dark mode support
 * 📱 Fully responsive design
 * 📬 Functional contact form with email delivery (Resend)
 * 🔐 Anti-spam protection (Honeypot + validation)
