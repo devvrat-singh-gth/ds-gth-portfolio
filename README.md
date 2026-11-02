@@ -57,7 +57,7 @@ A modern, responsive, and visual/animated developer portfolio built using **Next
 
    * 📩 To portfolio owner (main message)
    * 📬 Optional auto-reply to user
-5. Toast feedback shown to user
+5. Toast feedback shown to user for acknowledgement
 
 ---
 
