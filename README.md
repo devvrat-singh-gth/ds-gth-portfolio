@@ -8,7 +8,7 @@ A modern, responsive, and visual/animated developer portfolio built using **Next
 
 * ⚡ Built with Next.js (App Router)
 * 🎨 Clean, modern UI with smooth animations (Framer Motion)
-* 📱 Fully responsive design
+* 📱 Fully responsive design (Responsive with Mobile UI)
 * 📬 Functional contact form with email delivery (Resend)
 * 🔐 Anti-spam protection (Honeypot + validation)
 * 🔔 Toast notifications for UX feedback
